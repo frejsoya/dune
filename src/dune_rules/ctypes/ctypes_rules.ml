@@ -482,8 +482,7 @@ let gen_rules ~cctx ~(buildable : Buildable.t) ~loc ~scope ~dir ~sctx =
           ~c_types_includer_module))
 ;;
 
-let ctypes_cclib_flags sctx ~expander ~(buildable : Buildable.t) =
-  let standard = Action_builder.return [] in
+let ctypes_cclib_flags ?(standard = Action_builder.return []) sctx ~expander ~(buildable : Buildable.t)  =
   match buildable.ctypes with
   | None -> standard
   | Some ctypes ->

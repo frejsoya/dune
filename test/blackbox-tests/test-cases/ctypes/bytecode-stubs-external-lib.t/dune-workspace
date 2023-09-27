@@ -1,0 +1,6 @@
+(lang dune 3.10)
+
+; (context
+;  (default
+;   (disable_dynamically_linked_foreign_archives true)))
+;

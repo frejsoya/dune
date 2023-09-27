@@ -329,9 +329,7 @@ let build_stubs lib ~cctx ~dir ~expander ~requires ~dir_contents ~vlib_stubs_o_f
         Cxx_flags.get_flags ~for_:Link (Context.build_context ctx)
       | _ -> Action_builder.return []
     in
-    let c_library_flags =
-      Expander.expand_and_eval_set expander lib.c_library_flags ~standard
-    in
+    let c_library_flags = Ctypes_rules.ctypes_cclib_flags sctx ~expander ~buildable:lib.buildable ~standard in
     let lib_o_files_for_all_modes = Mode.Map.Multi.for_all_modes o_files in
     let for_all_modes = List.rev_append vlib_stubs_o_files lib_o_files_for_all_modes in
     if Mode.Dict.Set.to_list modes.ocaml
